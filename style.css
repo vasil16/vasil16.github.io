@@ -1,0 +1,114 @@
+html, body {
+      font-family: 'Verdana', 'Helvetica', sans-serif;
+    background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
+  height: 100%;
+  margin: 0px,40px,40px,0px;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+    color: #1c284b; 
+  text-align: center;
+  font-size: 40px; 
+  font-weight: lighter;
+  line-height: 10%; 
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  flex: 1;
+  padding: 20px;
+    margin-left:100px;
+margin-right:100px;
+font-size: 18px;
+    line-height: 1.6;
+    color: #142c4b; 
+}
+
+main p{
+    font-size: 14px;
+}
+
+
+footer {
+  background-color: #f0f0f0;
+  height: 100px;
+  text-align: center;
+}
+
+nav.buttonContainer {
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content:center;
+  gap: 20px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+#feedbackForm {
+  margin-top: 30px;
+}
+
+.navButton {
+  padding: 12px 24px;
+  width: 150px;  
+  background: rgba(255, 255, 255, 0.1);  
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  color: #142c4b;
+  font-size: 16px;
+  cursor: pointer;
+  backdrop-filter: blur(6px);  /* glass blur */
+  -webkit-backdrop-filter: blur(6px);  /* Safari support */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.3);  /* brighter glass */
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);  /* more depth */
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.gameCard {
+  display: flex;
+  gap: 20px;
+  padding: 16px;
+}
+
+.gameCard img{
+    width: 100px;
+    height: 100px;
+       border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2); 
+       transition: transform 0.2s ease;
+}
+
+.gameCard img:hover{
+transform: scale(1.05);
+}
+
+#experience {
+  gap: 80px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: lighter;
+  color: #1c284b;
+  margin-bottom: 20px;
+}
+
+.experienceCard {
+  gap: 10px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}

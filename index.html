@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <header>
+        <h3>Vasil Abrar</h3>
+        <h6>Java Developer | Game Developer</h6>
+    </header>
+
+    <nav class="buttonContainer">
+        
+        <button class = "navButton" onclick="showSection('about')">About Me</button>    
+        <button class = "navButton" onclick="showSection('projects')">Projects</button>
+        <button class = "navButton" onclick="showSection('skills')">Skils</button>
+        <button class = "navButton" onclick="showSection('experience')">Experience</button>
+    </nav>
+
+    <main>
+
+        <section id="landing" class="infoSection">
+            <h1>Welcome to My Portfolio</h1>
+            <p>
+    Hi, I’m Abdul Rahiman Vasil Abrar
+    Game Developer & Software Engineer
+
+    From building immersive VR games to crafting clean, high-performance Java applications, I love turning complex problems into smooth, interactive experiences. Whether it’s gameplay systems, real-time physics, or scalable backend logic—I code with purpose, precision, and passion.
+</p>
+        </section>
+    <section id="about" class= "infoSection" hidden>
+        <h2>👋 About Me</h2>
+    <p>
+        Hey! I’m Abdul Rahiman Vasil Abrar—a game developer, software engineer, and lifelong learner from Kasaragod, Kerala.
+
+        I specialize in building games and systems that feel alive—whether that’s a VR app where you can interact with objects using real physics, or a mobile game that hooks players in with just the right mechanics and feedback.
+
+        My journey started with Java, diving deep into logic building, OOP, and real-time system optimization. That’s where I learned to think in code: breaking down problems, optimizing execution, and writing clean, modular solutions. But the real magic happened when I found Unity. It felt like putting code into motion—and I was hooked.
+
+        Since then, I’ve worked on everything from hyper-casual mobile games to full-blown VR experiences. I’ve led gameplay mechanics, built AI decision systems, optimized rendering, and crafted immersive UI/UX. I even enjoy digging into the nitty-gritty—debugging, refactoring, and boosting performance until it just feels right.
+
+        I’m currently open to new opportunities—either in game development, real-time systems, or Java-based backend work. If it’s challenging, creative, and performance-driven, I’m in.
+    </p>
+    </section>
+    <section id="projects" class= "infoSection" hidden>
+        <h2>Stuff I’ve Built</h2>
+        <p>Here are some of the projects I’ve built or contributed to, where I got to mix creativity with deep tech work:</p>
+        <h3>🎮 Games</h3>
+
+        <div class="gameCard">            
+            <a href="https://play.google.com/store/apps/details?id=com.gp.ds.musicgame.pianobeatsenglish" target="_blank" ><img src="pianobeats.webp" alt="Piano Beats Game Icon" /></a>
+            <a href="https://play.google.com/store/apps/details?id=com.gp.dumadu.jigsawpuzzle&hl=en_US" target="_blank" ><img src="jigsaw.webp" alt="Jigsaw Puzzle Game Icon" /></a>
+            <a href="https://play.google.com/store/apps/details?id=com.gp.ds.ballsortchallenge&hl=en_US" target="_blank" ><img src="ballsort.webp" alt="Ball Sort Challenge Game Icon" /></a>
+            <a href="https://github.com/vasil16/Pool3D" target="_blank" ><img src="pool.jpg" alt="Pool 3D Game Icon" /></a>
+            <a href="https://github.com/vasil16/Cricket24" target="_blank" ><img src="cricket.jpg" alt="Cricket 24 Game Icon" /></a>
+
+        </div>
+
+
+  <h3>🎯 Real-Time Physics & AI Interaction (Personal Project)</h3>
+  <p>
+    I built a system that predicts object paths in real-time, calculates collisions, and lets an AI make smart decisions on what to do next. Think of it like a strategic player in a game that knows its next move better than you do.
+  </p>
+
+  <h3>💳 Secure Transaction System</h3>
+  <p>
+    Created a structured flow for safe and reliable transactions. This involved handling errors gracefully, debugging edge cases, and keeping the whole thing efficient.
+  </p>
+    </section>
+    <section id="experience" class= "infoSection" hidden>
+        <h2>Where I've Worked</h2>
+        <div class="experienceCard">
+        <h3>🎮 Game Developer → Senior Game Developer</h3>
+        <h4>Dumadu Studios, Bangalore</h4>
+        <h5>May 2023 – Present</h5>
+        <p>
+            When I joined Dumadu Studios, I hit the ground running—building casual and hyper-casual games that had to be fast, fun, and addictive. I quickly learned how crucial performance optimization is for mobile platforms: I trimmed load times, improved asset management, and rewrote messy logic into cleaner, modular systems.
+
+            Over time, I got the chance to dig deeper into gameplay mechanics and experiment with AI logic. I built responsive HUDs, tweaked game feel until everything “clicked,” and even helped increase user retention through small but meaningful changes based on real player feedback.
+
+            That hands-on experience laid the foundation for something bigger: stepping into VR.
+
+            As I moved into a Senior Game Developer role, I started leading development on immersive VR applications—complete with physics-based object interactions, intuitive hand tracking, and environments that felt alive. The challenge? Getting all of this to run smoothly while still looking sharp. That meant optimizing rendering pipelines, refining asset workflows, and rethinking how users interact in 3D space.
+
+            One of the highlights was designing AI systems that could predict trajectories and make smart decisions, adding a whole new layer of realism to gameplay. I also had the chance to mentor junior devs, which helped me grow as a communicator and team player.
+
+            And while my core was game dev, I wore the software engineer hat often—debugging performance issues, designing reusable systems, and implementing real-time logic for interactive experiences. Working in Agile teams taught me how to ship features quickly without sacrificing quality.
+
+            Looking back, my time at Dumadu Studios has been a crash course in everything I love: creative problem-solving, performance tuning, and bringing interactive worlds to life—whether on flat screens or in VR headsets.</p>
+        </div>
+        <div class="experienceCard">
+        <h3>📊 Client Associate</h3>
+        <h4>ReSource Pro, Bangalore</h4>
+        <h5>Sep 2022 – May 2023</h5>
+        <p>
+            Before I dove fully into development, I spent time working in the insurance operations world—and while it might sound far from game dev, this job taught me some of the most valuable soft skills I carry today.
+
+            At ReSource Pro, I worked directly on client systems, performing data-heavy tasks that demanded speed and precision. I had to follow strict guidelines, document every process clearly, and ensure high accuracy across every workflow. It was less about writing code and more about writing clean procedures—and that focus on clarity and consistency is something I still carry into every script and system I build.
+
+            One of the biggest takeaways was communication. I interacted with clients regularly, sending detailed updates, learning new systems, and constantly adapting to shifting workflows. It gave me a strong foundation in structured thinking, problem-solving under constraints, and spotting the tiny errors that can derail bigger processes.
+
+            Looking back, this role helped sharpen my discipline, process awareness, and ability to stay focused on quality—all of which translated directly into how I now approach debugging, code documentation, and system design.</p>
+            </div>
+</section>
+    <section id="skills" class= "infoSection" hidden>
+        <h2>What I’m Good At</h2>
+  <ul>
+    <li><strong>Languages I speak:</strong> Java, C#, HTML, JavaScript</li>
+    <li><strong>Problem-solving toolkit:</strong> OOP, algorithms, clean code</li>
+    <li><strong>Tools I use:</strong> IntelliJ, Eclipse, JDBC, Git</li>
+    <li><strong>Database stuff:</strong> MySQL, SQL Server – structured queries are my thing</li>
+    <li><strong>Also good with:</strong> Debugging, logic building, and making sense of messy systems</li>
+  </ul>
+    </section>
+
+
+    <div id = "feedbackForm" hidden>
+        <h2>Feedback Form</h2>
+        <textarea id="feedbackInput" placeholder="Enter your feedback here..."></textarea>
+        <button onclick="shareFeedback(document.getElementById('feedbackInput').value)">Submit Feedback</button>
+    </div>
+    </main>
+    <footer>
+        <!-- <button onclick="toggleFeedbackForm()">Share Feedback</button> -->
+    </footer>
+</body>
+</html>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.infoSection').forEach(sec => sec.hidden = true);
+  document.getElementById(id).hidden = false;
+}
+
+function shareFeedback(feedback) {
+  alert("Thank you for your feedback!");
+  document.getElementById('feedbackForm').hidden = true;
+}
+
+function toggleFeedbackForm() {
+document.getElementById('feedbackForm').hidden = false;
+
+}
+</script>

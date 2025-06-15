@@ -4,7 +4,7 @@ body {
   background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
   color: #1c284b;
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
   margin: 40px;
   display: flex;
   flex-direction: column;
@@ -139,6 +139,8 @@ nav.buttonContainer {
 .experienceCards>div {
   flex: 1;
   min-width: 300px;
+  height:400px;
+  overflow-y: auto;
   background: rgba(255, 255, 255, 0.1);
   padding: 20px;
   border-radius: 12px;

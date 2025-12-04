@@ -1,185 +1,308 @@
+/* Base Styles for All Devices */
 html,
 body {
   font-family: 'Verdana', 'Helvetica', sans-serif;
+  /* Updated background for better contrast and gradient */
   background: linear-gradient(to bottom, #f9f9f9, #e0e0e0);
   color: #1c284b;
-  height: 100%;
-  /* width: 100%; */
-  margin: 40px;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
 }
 
 header {
   color: #1c284b;
-  /* text-align: center; */
-  padding: 40px 0px 0px 40px;
-  height: 150px;
-  line-height: 10%;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+  /* Reduced side padding for mobile */
+  padding: 40px 20px;
+  /* FIX: Using normal line-height and margins for h3/h6 separation */
+  line-height: normal;
+  border-radius: 0;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 header h3 {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
-
+  /* Separates name from title */
+  margin-bottom: 5px;
 }
 
 header h6 {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: normal;
   opacity: 0.8;
+  margin-top: 0;
 }
 
 main {
   flex: 1;
   overflow-y: auto;
-  margin-left: 60px;
-  margin-right: 60px;
-  font-size: 18px;
+  /* Smaller margins for mobile */
+  margin: 20px 20px 40px 20px;
+  font-size: 16px;
   line-height: 1.6;
   color: #142c4b;
 }
 
 .infoSection {
-  font-size: 14px;
+  padding-top: 20px;
+  font-size: 16px;
 }
 
+/* Navigation Bar */
 nav.buttonContainer {
   width: 100%;
   margin-top: 10px;
   margin-bottom: 10px;
   display: flex;
+  /* Important: allows buttons to wrap on small screens */
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 20px;
+  /* Smaller gap on mobile */
+  gap: 10px;
+  padding: 15px 10px;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
 
-#feedbackForm {
-  margin-top: 30px;
-}
-
 .navButton {
-  padding: 12px 24px;
-  width: 150px;
+  padding: 10px 15px;
+  /* Use auto-width for flexibility */
+  width: auto;
+  /* Allow buttons to fill space */
+  flex-grow: 1;
+  /* Max width for desktop */
+  max-width: 150px;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 12px;
+  border-radius: 8px;
   color: #142c4b;
-  font-size: 16px;
+  /* Smaller font for mobile */
+  font-size: 14px;
   cursor: pointer;
   backdrop-filter: blur(6px);
-  /* glass blur */
   -webkit-backdrop-filter: blur(6px);
-  /* Safari support */
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .navButton:hover {
   background: rgba(255, 255, 255, 0.3);
-  /* brighter glass */
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
-  /* more depth */
+  /* Smaller lift on hover */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
 }
 
+/* Projects Section */
 .gameCard {
   display: flex;
-  gap: 20px;
-  padding: 16px;
+  /* Allows game icons to wrap */
+  flex-wrap: wrap;
+  /* Smaller gap */
+  gap: 15px;
+  padding: 10px 0;
+  /* Center icons */
+  justify-content: center;
 }
 
 .gameCard img {
-  width: 100px;
-  height: 100px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  /* Smaller icon size for mobile */
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease;
 }
 
 .gameCard img:hover {
-  transform: scale(1.05);
+  transform: scale(1.1);
 }
 
 .projectCard {
   display: flex;
-  flex-wrap: wrap;
-  /* allows wrapping on smaller screens */
-  gap: 40px;
-  justify-content: space-between;
+  /* Stack vertically by default */
+  flex-direction: column;
+  /* Smaller gap */
+  gap: 20px;
   margin-top: 10px;
-  padding: 20px;
+  padding: 0;
 }
 
 .projectCard>div {
-  flex: 1;
-  min-width: 300px;
+  /* Take full width on mobile */
+  flex: 1 1 100%;
+  /* Remove minimum width constraint */
+  min-width: unset;
   background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
+  padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Experience Section */
 .experienceCards {
   display: flex;
-  flex-wrap: wrap;
-  /* allows wrapping on smaller screens */
-  gap: 40px;
-  justify-content: space-between;
+  /* Stack vertically by default */
+  flex-direction: column;
+  gap: 20px;
   margin-top: 10px;
-  padding: 20px;
+  padding: 0;
 }
 
 .experienceCards>div {
-  flex: 1;
-  min-width: 300px;
-  height:400px;
-  overflow-y: auto;
+  /* Take full width on mobile */
+  flex: 1 1 100%;
+  /* Remove minimum width constraint */
+  min-width: unset;
+  /* Allow height to expand */
+  height: auto;
+  /* Remove scrollbar on mobile */
+  overflow-y: visible;
   background: rgba(255, 255, 255, 0.1);
-  padding: 20px;
+  padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Skills Section */
 .skillsGrid {
   display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: space-between;
+  /* Stack vertically by default */
+  flex-direction: column;
+  gap: 20px;
   margin-top: 10px;
-  padding: 20px;
+  padding: 0;
 }
 
 .skillCategory {
-  flex: 1;
-  min-width: 250px;
+  /* Take full width on mobile */
+  flex: 1 1 100%;
+  /* Remove minimum width constraint */
+  min-width: unset;
   background: rgba(255, 255, 255, 0.1);
-  padding: 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s ease;
 }
 
 .skillCategory:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Disable transform on hover for mobile */
+  transform: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .skillCategory h3 {
-  margin-bottom: 10px;
-  color: #1c284b;
+  margin-bottom: 8px;
+  font-size: 18px;
   font-weight: 600;
 }
 
 .skillCategory ul {
-  padding-left: 18px;
-  line-height: 1.6;
+  padding-left: 20px;
+  line-height: 1.5;
   font-size: 14px;
-  color: #142c4b;
+}
+
+/* --- Desktop/Tablet Layout (Larger Screens) --- */
+@media (min-width: 768px) {
+
+  /* Re-apply desktop margins and spacing */
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    padding: 40px 0px 0px 60px;
+    height: 150px;
+    line-height: normal;
+    border-radius: 10px;
+  }
+
+  header h3 {
+    font-size: 36px;
+  }
+
+  header h6 {
+    font-size: 18px;
+  }
+
+  main {
+    margin-left: 80px;
+    margin-right: 80px;
+    font-size: 18px;
+  }
+
+  /* Navigation: Center and fix widths */
+  nav.buttonContainer {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .navButton {
+    padding: 12px 24px;
+    width: 150px;
+    font-size: 16px;
+    border-radius: 12px;
+  }
+
+  /* Projects Section: Enable side-by-side */
+  .projectCard {
+    /* Layout side-by-side */
+    flex-direction: row;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .projectCard>div {
+    min-width: 300px;
+    padding: 20px;
+  }
+
+  .gameCard img {
+    /* Restore desktop icon size */
+    width: 100px;
+    height: 100px;
+  }
+
+  /* Experience Section: Enable side-by-side */
+  .experienceCards {
+    /* Layout side-by-side */
+    flex-direction: row;
+    gap: 40px;
+    padding: 20px;
+  }
+
+  .experienceCards>div {
+    /* Restore desktop fixed height with scroll */
+    height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    min-width: 300px;
+  }
+
+  /* Skills Section: Enable grid layout */
+  .skillsGrid {
+    /* Layout in a row/grid */
+    flex-direction: row;
+    gap: 30px;
+    padding: 20px;
+  }
+
+  .skillCategory {
+    min-width: 250px;
+    padding: 16px;
+  }
+
+  .skillCategory:hover {
+    /* Restore desktop hover effect */
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  }
 }

@@ -5,8 +5,8 @@
   /* Dark Theme Colors (DEFAULT) */
   --bg-main: #1e1e2c;
   /* Main background */
-  --card-base: rgba(30, 30, 44, 0.55);
-  /* Dark glass base */
+  --card-base: rgba(30, 30, 44, 0.45);
+  /* Dark glass base (Increased transparency) */
   --text-color: #f0f0f5;
   /* Light text color */
   --accent-color: #7b9cff;
@@ -15,14 +15,16 @@
   /* Soft glow */
   --shadow-dark: rgba(0, 0, 0, 0.8);
   /* Strong outer shadow */
-  --shadow-light: rgba(255, 255, 255, 0.06);
+  --shadow-light: rgba(255, 255, 255, 0.08);
   /* Inner highlight */
 
   /* Glassmorphism/Liquid parameters */
   --liquid-lx: 50%;
   --liquid-ly: 30%;
-  --blur-amount: 18px;
-  --border-opacity: 0.3;
+  --blur-amount: 20px;
+  /* Slight increase in blur */
+  --border-opacity: 0.2;
+  /* Lighter border */
 
   /* Font weight for headings */
   --heading-weight: 700;
@@ -31,12 +33,11 @@
 /* ===========================
    10. Light Mode Overrides
    =========================== */
-
-/* When the body has the light-mode class, redefine all variables */
 body.light-mode {
   /* Light Theme Colors (OVERRIDES) */
   --bg-main: #f0f0f5;
-  --card-base: rgba(255, 255, 255, 0.85);
+  --card-base: rgba(255, 255, 255, 0.7);
+  /* White glass base (Increased transparency) */
   --text-color: #1e1e2c;
   --accent-color: #3b50c0;
   /* Deep blue/indigo accent */
@@ -46,7 +47,7 @@ body.light-mode {
   --shadow-dark: rgba(0, 0, 0, 0.2);
   --shadow-light: rgba(255, 255, 255, 0.9);
 
-  --border-opacity: 0.8;
+  --border-opacity: 0.7;
 }
 
 /* ===========================
@@ -69,7 +70,7 @@ body {
   position: relative;
 }
 
-/* Background light source */
+/* Background light source (Ambient glow) */
 body::before {
   content: "";
   position: absolute;
@@ -89,71 +90,148 @@ body.light-mode::before {
 
 
 /* ===========================
-   3. Header
+   3. Header (FIXED POSITION & Content Layer)
    =========================== */
 header {
-  position: relative;
-  padding: 20px 15px;
-  margin: 15px;
-  border-radius: 20px;
-  /* Glassmorphism styles using generic variables */
-  background: var(--card-base);
-  border: 1px solid rgba(255, 255, 255, var(--border-opacity));
-  box-shadow: 0 8px 32px var(--shadow-dark), inset 0 1px 1px var(--shadow-light);
-  backdrop-filter: blur(var(--blur-amount)) saturate(150%);
-  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+
+  padding: 0px 15px;
+  margin: 0;
+  border-radius: 0px 0px 5px 5px;
+
+  /* Frosted glass basics */
+  background: rgba(255, 255, 255, 0.12);
+  /* light glass tint */
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, var(--border-opacity));
+  box-shadow: 0 4px 10px var(--shadow-dark);
+
   overflow: hidden;
   z-index: 10;
 }
 
+/* Add the dotted/texture effect */
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  /* Noise texture (tiny 8×8 PNG repeated) */
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAMAAADzfx6EAAAABlBMVEUAAAD///+l2Z/dAAAAAXRSTlMAQObYZgAAABVJREFUeJxjYGBg+M/AwMDAAAMAAAEVAAGJ9ZhRAAAAAElFTkSuQmCC');
+
+  opacity: 0.22;
+  /* adjust grain strength */
+}
+
+
+/* Header Headings/Content (Sharp text) */
 header h3 {
   font-size: 32px;
-  margin-bottom: 3px;
+  margin-bottom: 0px;
+  /* Removed margin */
   color: var(--accent-color);
   font-weight: var(--heading-weight);
-  /* Stronger text glow */
   text-shadow: 0 0 12px var(--accent-glow);
 }
 
 header h6 {
   font-size: 16px;
   opacity: 0.9;
-  margin-top: 0;
+  margin-top: 0px;
+  /* Removed margin */
   color: var(--text-color);
 }
 
-/* Header sheen overlay (liquid effect) */
+/* Header ::before (Dedicated Glass Background Layer) */
 header::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(600px 220px at var(--liquid-lx) var(--liquid-ly), rgba(255, 255, 255, 0.2), transparent 40%);
+
+  /* 1. Translucent Fill */
+  background: var(--card-base);
+
+  /* 2. Glass Effects */
+  backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  filter: url(#micro-refraction);
+
+  /* 3. Liquid Sheen Overlay (Combined with fill) */
+  background-image: radial-gradient(600px 220px at var(--liquid-lx) var(--liquid-ly), rgba(255, 255, 255, 0.2), transparent 40%);
   mix-blend-mode: overlay;
+
   pointer-events: none;
-  transition: transform 0.35s ease, opacity 0.35s ease;
+  z-index: -1;
+  /* PUSH BEHIND ALL HEADER CONTENT */
 }
 
-header:hover::before {
-  transform: translateY(-4px);
-  opacity: 1;
+.content-wrapper {
+  padding-top: 90px;
 }
 
 /* ===========================
-   4. Navigation Buttons (Original Shape, High Contrast)
+   4. Navigation Buttons (Container - Content Layer)
    =========================== */
+
+
 nav.buttonContainer {
-  margin: 10px 15px;
+  /* Margin reverted to standard spacing */
+  margin: 10px 15px 10px 15px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 12px;
-  padding: 10px;
-  background: rgba(30, 30, 44, 0.3);
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
+  padding: 15px;
+  /* Content Layer Styling */
+  background: transparent;
+
+  position: relative;
+  z-index: 1;
 }
 
+/* Nav Container ::before (Dedicated Glass Background Layer) */
+nav.buttonContainer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: -1;
+  /* PUSH BEHIND BUTTONS */
+
+  /* Glass effects */
+  background: var(--card-base);
+  backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  filter: url(#micro-refraction);
+
+  pointer-events: none;
+}
+
+/* Light Mode Container Override (Float buttons cleanly) */
+body.light-mode nav.buttonContainer {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+body.light-mode nav.buttonContainer::before {
+  /* Hide the glass layer entirely in light mode */
+  background: transparent;
+  backdrop-filter: none;
+  filter: none;
+  border: none;
+}
+
+
+/* Nav Button Styling (Content is sharp) */
 .navButton {
   padding: 12px 20px;
   flex-grow: 1;
@@ -174,9 +252,10 @@ nav.buttonContainer {
   transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   position: relative;
   z-index: 2;
+  /* Ensure buttons are above the glass layer (z-index: -1) */
 }
 
-/* Light mode button override for background/shadows */
+/* Light mode button override */
 body.light-mode .navButton {
   background: #e0e0e5;
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -215,25 +294,6 @@ body.light-mode .navButton:active {
     inset -3px -3px 7px var(--shadow-light);
 }
 
-body.light-mode nav.buttonContainer {
-  /* Remove the dark background */
-  background: transparent;
-  /* Remove the subtle blur to blend more naturally */
-  backdrop-filter: none;
-}
-
-/* Also ensure the nav buttons themselves use the light mode button style */
-body.light-mode .navButton {
-  /* Existing rule for light mode buttons */
-  background: #e0e0e5;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  box-shadow:
-    4px 4px 10px rgba(0, 0, 0, 0.1),
-    -4px -4px 10px var(--shadow-light),
-    inset 0 0 0 transparent;
-}
-
-
 .navButton:focus-visible {
   box-shadow:
     0 0 0 3px var(--accent-color),
@@ -246,10 +306,13 @@ body.light-mode .navButton {
 main {
   flex: 1;
   overflow-y: auto;
+  /* Margin reverted to standard spacing */
   margin: 10px 15px 30px 15px;
+
   font-size: 16px;
   line-height: 1.6;
 }
+
 
 .infoSection h2 {
   font-size: 26px;
@@ -287,7 +350,7 @@ main {
 }
 
 /* ===========================
-   6. Cards & Skill Sections (Uniform Glass Cards)
+   6. Cards & Skill Sections (Uniform Frosted Glass Cards)
    =========================== */
 .projectCard,
 .experienceCards,
@@ -298,26 +361,26 @@ main {
   margin-top: 10px;
 }
 
+/* Card Content Layer */
 .projectCard>div,
 .experienceCards>div,
 .skillCategory {
   flex: 1 1 100%;
   min-width: unset;
 
-  /* Glass Card Styles using generic variables */
-  background: var(--card-base);
+  /* Content Layer Styles */
+  background: transparent;
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, var(--border-opacity));
   padding: 20px;
   box-shadow: 0 10px 30px var(--shadow-dark), inset 0 1px 1px var(--shadow-light);
-  backdrop-filter: blur(var(--blur-amount)) saturate(150%);
-  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.35s ease, background 0.35s ease, transform 0.35s ease;
 }
 
-/* sheen overlay for cards (keep existing) */
+/* Card ::before (Dedicated Glass Background Layer) */
 .projectCard>div::before,
 .experienceCards>div::before,
 .skillCategory::before {
@@ -325,11 +388,23 @@ main {
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: radial-gradient(600px 220px at var(--liquid-lx) var(--liquid-ly), rgba(255, 255, 255, 0.12), transparent 40%);
+
+  /* 1. Glass Fill and Effects */
+  background: var(--card-base);
+  backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  -webkit-backdrop-filter: blur(var(--blur-amount)) saturate(150%);
+  filter: url(#micro-refraction);
+
+  /* 2. Liquid Sheen Overlay (Keep this part for the polish) */
+  background-image: radial-gradient(600px 220px at var(--liquid-lx) var(--liquid-ly), rgba(255, 255, 255, 0.12), transparent 40%);
   mix-blend-mode: overlay;
+
   pointer-events: none;
   transition: transform 0.35s ease, opacity 0.35s ease;
+  z-index: -1;
+  /* PUSH BEHIND ALL CARD CONTENT */
 }
+
 
 @media (hover: hover) and (pointer: fine) {
 
@@ -375,7 +450,7 @@ body.light-mode .gameCard img:hover {
 }
 
 /* ===========================
-   8. Toggle Button Style (UPDATED FOR ICON)
+   8. Toggle Button Style
    =========================== */
 .modeToggle {
   position: absolute;
@@ -387,6 +462,7 @@ body.light-mode .gameCard img:hover {
   font-size: 18px;
   cursor: pointer;
   background: var(--card-base);
+  /* Use card base for the button color */
   color: var(--text-color);
   border: 1px solid rgba(255, 255, 255, var(--border-opacity));
   box-shadow: 0 2px 5px var(--shadow-dark);
@@ -414,20 +490,24 @@ body.light-mode .modeToggle::after {
    9. Responsive (Tablet / Desktop)
    =========================== */
 @media (min-width: 768px) {
-  header {
-    padding: 40px 0px 0px 60px;
-    margin: 40px;
-    height: 150px;
+
+  /* Content Wrapper: Adjusted for Desktop */
+  .content-wrapper {
+    margin-top: 80px;
+    /* Slightly more clearance on desktop */
   }
 
+  /* Main content starts further down on desktop */
   main {
     margin-left: 80px;
     margin-right: 80px;
     font-size: 18px;
   }
 
+  /* Nav container desktop margin adjusted back to standard spacing */
   nav.buttonContainer {
-    margin: 10px 80px;
+    margin: 30px 80px 20px 80px;
+    /* Standard spacing after the wrapper clears the header */
     padding: 20px;
     gap: 20px;
   }
@@ -489,6 +569,19 @@ body.light-mode .modeToggle::after {
    =========================== */
 @media (max-width: 720px) {
 
+  /* Mobile Content Wrapper Adjustment */
+  .content-wrapper {
+    margin-top: 70px;
+    /* Consistent mobile clearance */
+  }
+
+  /* Mobile Nav Container Adjustment */
+  nav.buttonContainer {
+    /* Revert to standard mobile margin */
+    margin: 10px 15px 10px 15px;
+  }
+
+
   /* Reduce blur on mobile for performance */
   :root {
     --blur-amount: 10px;
@@ -499,8 +592,18 @@ body.light-mode .modeToggle::after {
   .experienceCards>div,
   .skillCategory {
     transition: none;
-    -webkit-backdrop-filter: blur(var(--blur-amount));
+  }
+
+  /* Remove the complex filters/blur on the mobile glass layer for performance */
+  header::before,
+  nav.buttonContainer::before,
+  .projectCard>div::before,
+  .experienceCards>div::before,
+  .skillCategory::before {
     backdrop-filter: blur(var(--blur-amount));
+    -webkit-backdrop-filter: blur(var(--blur-amount));
+    filter: none;
+    /* Disable refraction filter on mobile */
   }
 
   /* Keep sheen overlay on mobile, but reduce its effect */
@@ -508,8 +611,8 @@ body.light-mode .modeToggle::after {
   .projectCard>div::before,
   .experienceCards>div::before,
   .skillCategory::before {
-    opacity: 0.5;
-    /* Always slightly visible */
-    transform: none;
+    opacity: 0.8;
+    background-image: none;
+    /* Disable sheen image to simplify */
   }
 }
